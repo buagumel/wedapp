@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEDACARD</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            height: 200px;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #800000;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+            outline: none;
+            background-color: rgba(62, 62, 232, 0.1);
+            backdrop-filter: blur(3px);
+        }
+
+        .main-temp {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            flex: 1;
+        }
+
+        .temp {
+            font-size: 50px;
+            font-family: fantasy;
+            color: #800000;
+            padding-right: 10px;
+        }
+
+        .main {
+
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+        }
+
+        .main-icon {
+            padding-left: 10px;
+        }
+
+        .city-name {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: larger;
+        }
+
+       
+
+        .city-cod {
+           
+            text-align: center;
+            
+            border-radius: 10px;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+
+        .details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            
+        }
+
+
+
+
+    </style>
+
+
+
+</head>
+<body>
+
+    <div class="stars"></div>
+<div class="twinkling"></div>
+<div class="clouds"></div>
+
+        <div class="card">
+            
+            <div class="main-temp">
+                
+                <div class="main-icon">
+                    <img src="" alt="">
+                    <p class="main">main</p>
+                </div>
+
+                <div class="temp">
+                    <span>29 <sup>o</sup>C</span>
+                </div>
+
+            </div>
+
+            <div class="city-cod">
+                <p class="city-name">Gumel, <span class="country">NG</span></p>
+                <p class="lon-lat">
+                    <span>Longitude:</span> 12.99, <span>Latitude:</span> 99.9
+                </p>
+            </div>
+
+            <div class="details">
+                <p class="description">Description: <span>Broken Cloud</span></p>
+                <p class="humidity">Humidity: <span>12%</span></p>
+                <p class="pressure">Pressure: <span>1008Pa</span></p>
+            </div>
+        </div>
+
+
+        
+    
+</body>
+</html>

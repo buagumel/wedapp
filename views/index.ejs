@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEDAPP</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+
+    <!-- Cloud Background -->
+    <div id="background-wrap">
+        <div class="x1">
+            <div class="cloud"></div>
+        </div>
+
+        <div class="x2">
+            <div class="cloud"></div>
+        </div>
+
+        <div class="x3">
+            <div class="cloud"></div>
+        </div>
+
+        <div class="x4">
+            <div class="cloud"></div>
+        </div>
+
+        <div class="x5">
+            <div class="cloud"></div>
+        </div>
+    </div>
+    <!-- Header -->
+    <nav>
+        <div class="logo">
+            <h1>WEDAPP</h1>
+        </div>
+        <div class="mode">
+            <button type="checkbox" class="material-symbols-outlined night-icon" id="mode-toggle"> nights_stay</button>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div>
+                <form id="searchForm" action="/search" method="post" class="search-body">
+                    <input id="search" type="text" name="search">
+                    <span class="material-symbols-outlined search-icon" id="searchButton">
+                        search
+                    </span>
+                </form>
+            </div>
+
+            <div>
+                <div class="content">
+
+                    <% if (locals.weather || locals.weather_2 ) { %>
+
+
+                        <% if (locals.weather){ %>
+                            <div class="card">
+
+                                <div class="main-temp">
+
+                                    <div class="main-icon">
+                                        <img src="" alt="">
+                                        
+                                            <p class="main">
+                                                <%= weather.main %>
+                                            </p>
+                                                                             </div>
+
+                                    <div class="temp">
+                                        <span><%= temperature %> <sup>o</sup>C</span>
+                                    </div>
+
+                                </div>
+
+                                <div class="city-cod">
+                                    <p class="city-name"><%= name  %>, <%= state %><span class="country">, <%= country  %></span></p>
+                                    <p class="lon-lat">
+                                        <span>Longitude:</span> <%= lon.toFixed(2) %>, <span>Latitude:</span> <%= lat.toFixed(2)  %>
+                                    </p>
+                                </div>
+
+                                <div class="details">
+                                    <p class="description">Description: <span><%= weather.description %></span></p>
+                                    <p class="humidity">Humidity: <span><%= humidity %>%</span></p>
+                                    <p class="pressure">Pressure: <span><%= pressure  %> Pa</span></p>
+                                </div>
+                            </div>
+
+                            <% }else{}; %>
+
+
+                                <% if (locals.weather_2){ %>
+                                    <div class="card">
+
+                                        <div class="main-temp">
+
+                                            <div class="main-icon">
+                                                <img src="" alt="">
+                                                <p class="main"><%= main_2 %></p>
+                                            </div>
+
+                                            <div class="temp">
+                                                <span><%= temp2 %> <sup>o</sup>C</span>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="city-cod">
+                                            <p class="city-name"><%= name2 %>, <%= state2 %> <span class="country"><%= country2  %></span></p>
+                                            <p class="lon-lat">
+                                                <span>Longitude:</span> <%= lon2.toFixed(2)  %>, <span>Latitude:</span> <%= lat2.toFixed(2)  %>
+                                            </p>
+                                        </div>
+
+                                        <div class="details">
+                                            <p class="description">Description: <span><%= weather_2.description  %></span></p>
+                                            <p class="humidity">Humidity: <span><%= humidity2 %>%</span></p>
+                                            <p class="pressure">Pressure: <span> <%= pressure2  %> Pa</span></p>
+                                        </div>
+                                    </div>
+
+                                    <% }else{}; %>
+
+                                        <% } else{ %>
+                                            <h1>Enter a city name!</h1>
+                                            <% } %>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <p>Made with love by <span class="devBaffa">devBaffa</span></p>
+        </div>
+    </footer>
+
+    <script>
+        const button = document.getElementById('mode-toggle');
+        const body = document.body;
+
+        button.addEventListener('click', () => {
+            if (body.classList.contains('light-mode')) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+
+            }
+        });
+
+        // Set initial mode to light
+        body.classList.add('light-mode');
+
+        function submitForm() {
+            // Submit the form directly
+            document.getElementById("searchForm").submit();
+        }
+
+        // Handle the click event on the search button
+
+
+        // Handle 'Enter' keypress inside the search input field
+        document.getElementById("search").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevent default form submission
+
+                var townCount = (document.getElementById("search").value).length;
+
+
+                if (townCount < 3) {
+                    alert("Please enter at least 3 characters!");
+                } else {
+                    submitForm();
+                }
+            }
+        });
+
+
+        document.getElementById("searchButton").addEventListener("click", function () {
+
+            var townCount = (document.getElementById("search").value).length;
+
+
+            if (townCount < 3) {
+                alert("Please enter at least 3 characters!");
+            } else {
+                submitForm();
+            }
+
+
+        });
+
+    </script>
+
+</body>
+
+</html>
